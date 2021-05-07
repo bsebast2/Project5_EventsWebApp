@@ -1,0 +1,79 @@
+
+<%- include('../partials/header.ejs')%>
+<div class = "content">
+    <h2>Welcome, <%=user.firstName%> <%=user.lastName%></h2>
+
+    <table style="width:100%" class="">
+
+    <%if(connections.length){%>
+        <p>You have created the following stories</p>
+        <tr>
+            <th><p>Connection Name</p></a></th>
+            <th><p>Connection Topic</p></th>
+            <th><p>Details</p></th>
+            <th><p>Date</p></th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Host Name</th>
+            <th>Image URL</th>
+            <th>Created At</th>
+            <th>More Information</th>
+        </tr>
+        <%connections.forEach(connection=>{%>
+
+
+           
+            <tr>
+                <th><a href = '/connections/<%= connection.id%>'><p><%=connection.name%></p></a></th>
+                <th><%=connection.topic%></th>
+                <th><%=connection.details%></th>
+                <th><%=connection.date%></th>
+                <th><%=connection.start_time%></th>
+                <th><%=connection.end_time%></th>
+                <th><%=connection.host_name%></th>
+                <th><%=connection.image%></th>
+                <th><%=connection.createdAt%></th>
+                <th>
+                <form >
+                    <button class=" button createLesson"  type="submit" formmethod="GET" formaction="/connections/<%= connection.id%>/edit">Edit </button>
+                    <button class=" button createLesson" type="submit" formmethod="POST" formaction="/connections/<%= connection.id%>?_method=DELETE">Delete </button>
+                </form>
+                </th>
+            </tr>
+
+        
+            <%});
+    }else{%>
+        <p>You have not created any connections</p>
+    <%}%>
+
+    </table>
+
+    <table style="width:100%" class="">
+        <p>You have RSVP'ed to the following connections/events</p>
+        <tr>
+            <th><p>Connection Name</p></a></th>
+            <th><p>Category</p></th>
+            <th><p>Going?</p></th>
+            <th><p>Date</p></th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Host Name</th>
+            <th>Image URL</th>
+            <th>Created By (USER)</th>
+            <th>More Information</th>
+        </tr>
+
+
+        
+    </table>
+
+
+    </div>
+
+
+
+    <%- include('../partials/footer.ejs')%>
+
+
+

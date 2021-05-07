@@ -1,0 +1,45 @@
+<%-include('../partials/header.ejs')%>
+
+    <h2>Welcome <%=user%> </h2>
+
+<div class="connection">
+    
+<div class="connection-left">
+    
+    <div class="connection-profilePic">
+        <img src= <%=connection.image%> alt="Profile Pic" width=150px height=150px >
+    </div>       
+
+</div>
+
+<div class="connection-bottom">
+    <h1><%=connection.name%></h1>
+    <small>Posted <%=connection.date%> by <%=connection.host_name%> in Category: <%=connection.topic%> </small>
+    <p>Start Time: <%=connection.start_time%> </p> <p>   End Time:<%=connection.end_time%>  </p>  <p> Created Time:<%=connection.createdAt%></p>
+    <p>Host Name: <%=connection.host_name%></p>
+    <p><%=connection.details%></p>
+    </div>
+    <%if(user == connection.author._id){%>
+    <form >
+        <button class=" button createLesson"  type="submit" formmethod="GET" formaction="/connections/<%= connection.id%>/edit">Edit </button>
+        <button class=" button createLesson" type="submit" formmethod="POST" formaction="/connections/<%= connection.id%>?_method=DELETE">Delete </button>
+    </form>
+    
+    <%}else if(user){%>
+        <p>RSVP HERE</p>
+        <form id="RSVP" action = '"/connections/<%= connection.id%>/rsvp' method = 'POST'>
+          
+        <button class=" button createRSVP_yes"  type="submit"  name="rsvp"  value="yes">Yes </button>
+        <button class=" button createRSVP_no"  type="submit"  name="rsvp"  value="No">No</button>
+        <button class=" button createRSVP_maybe"  type="submit"  name="rsvp"  value="Maybe">Maybe </button>
+        </form>
+   
+        <%}%>
+    </div>
+</div>
+
+
+<%-include('../partials/footer.ejs')%>
+
+
+

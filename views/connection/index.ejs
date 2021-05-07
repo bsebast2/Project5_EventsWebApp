@@ -1,0 +1,43 @@
+<%-include('../partials/header.ejs')%>
+
+
+
+    <div class = "content">
+    <h2 class="newConnectionHeader">Browse All Music Lessons</h2>
+    <ul class = "nav connections">
+
+
+  
+    <%const unique = [...new Set(connections.map(item => item.topic))];%>
+    <%console.log(unique);%>
+
+    <%if(unique.length){%>
+
+        <%unique.forEach(topic=>{%>
+
+            <h2><%=topic%></h2>
+            <%   if(connections.length){ %>
+            <%connections.forEach(connection=>{%>
+                <% if(connection.topic==topic){%>
+                    <a href="/connections/<%= connection.id%>"> <p><%=connection.name%></p> </a>  
+              <% } 
+              
+
+                })
+            }
+            else{ %>
+                <p>There is no story to display.</p>
+            <%}
+
+        })
+    } %>
+
+
+    
+
+        
+
+    </ul>
+</div>
+
+        <%-include('../partials/footer.ejs')%>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <section class="menu">
+    
+    <div class="header-left">
+       <!-- <a href="index.html"><img src="images/logo.jpg" alt="Company Logo" height=30px weight=30px  ></a>
+       --><a href="/"><img src="../../../images/logo.JPG" alt="Company Logo" height=50px weight=50px   ></a>
+        
+            
+    </div>
+    <div class="header-right">
+         <h2>Welcome to MusicTogether! </h2>
+        <p>Where you can learn from others and teach others too.</p>
+         
+    </div>
+    <div class="navigation">
+        <nav>
+            <a href="/connections/new">Start a new Lesson!</a>
+            <a href="/connections">See All Lessons</a>
+            <%if(!user){%>
+                <a href='/users/new'>Sign Up</a>
+                <a href='/users/login'>Login</a>   
+                <%}else{%>
+                <a href='/users/profile'>Profile</a>
+                <a href='/users/logout'>Logout</a>  
+                <%}%>
+
+            
+        </nav>
+    </div>
+
+    <% if(errorMessages.length > 0) {%>
+        <% errorMessages.forEach(message=>{%>
+            <div class='error'>
+                <%=message%>
+            </div>
+            <%});%>
+                <%}%>
+    
+                    <% if(successMessages.length > 0) {%>
+    
+                        <% successMessages.forEach(message=>{%>
+                            <div class='success'>
+                                <%=message%>
+                            </div>
+                            <%});%>
+                                <%}%>
+                                
+</body>
